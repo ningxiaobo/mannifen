@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>品牌新闻-曼妮芬</title>
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<!--[if IE 6]>
+<script src="js/DD_belatedPNG.js"></script>
+<script>
+  DD_belatedPNG.fix('#logo img,#close,#prev,#next,.news');
+</script>
+<![endif]-->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script>
+	//打开新闻页
+	function openDetails(newsid){
+		/*
+			//ajax请求，然后填充newscontent
+			$.ajax({
+				"url":"handler.php?id="+newsid,
+				cache:false,
+				success:function(html){
+					$("#newscontentwrap").html(html);
+				},
+				error:function(){
+					//请求失败
+				}
+			});
+		*/
+		$("#newslist").hide();
+		$("#newscontent").show();
+	}
+	//隐藏文字遮罩
+	function oNNewsOver(el){
+		var p = $(el);
+		p.find(".td").hide();
+		p.find(".mask").hide();
+	}
+	//显示文字遮罩
+	function oNNewsOut(el){
+		var p = $(el);
+		p.find(".td").show();
+		p.find(".mask").show();
+	}
+	$(function(){
+		//显示前后按钮
+		
+		var pagenum = 6,
+			rnum = 3,
+			cnum = 2,
+			interval = 1000,
+			maxanitime = 0,
+			itemwidth = 0,
+			maxleft = 0,
+			nextbtn = $("#next"),
+			prevbtn = $("#prev"),
+			group = $("#newsgroup"),
+			groupwidth = 0,
+			newslist = $(".newsitem");
+		itemwidth = $(newslist[0]).width();
+		nextbtn.hide();
+		prevbtn.hide();
+		if(newslist.length>pagenum){
+			nextbtn.show();
+			groupwidth = Math.floor(newslist.length/pagenum)*rnum*itemwidth+Math.ceil((newslist.length%pagenum)/cnum)*itemwidth;
+			maxleft = groupwidth-rnum*itemwidth;
+			group.width(groupwidth);
+		}
+		nextbtn.hover(function(){
+			//向左移动
+			prevbtn.show();
+			var left = Math.abs(parseInt(group.css("left")));
+			if(maxleft>left){
+				maxanitime = Math.ceil((maxleft-left)/itemwidth)*interval;
+				group.animate({
+					left:-maxleft+"px"
+				},maxanitime,"swing",function(){
+					nextbtn.hide();
+				});
+			}
+		},function(){
+			group.stop();
+		});
+		
+		prevbtn.hover(function(){
+			//向右移动
+			nextbtn.show();
+			var left = Math.abs(parseInt(group.css("left")));
+			if(left>0){
+				maxanitime = Math.ceil(left/itemwidth)*interval;
+				group.animate({
+					left:"0px"
+				},maxanitime,"swing",function(){
+					prevbtn.hide();
+				});
+			}
+		},function(){
+			group.stop();
+		});
+		
+		//绑定关闭新闻 ChinaMapForFlash 
+		$("#close").bind("click",function(){
+			$("#newslist").show();
+			$("#newscontent").hide();
+		})
+	});
+</script>
+</head>
+<body>
+<div id="header">
+  <div id="logo"><a href="index.html"><img src="images/logo.png" alt="曼妮芬" /></a></div>
+  <div id="menu">
+    <ul>
+      <li><a href="index.html#rec">特别推荐</a></li>
+      <li><a href="index.html#product">产品展厅</a></li>
+      <li><a href="index.html#brand">品牌故事</a></li>
+      <li><a href="store.html">店铺信息</a></li>
+      <li><a href="news.html" class="current">品牌新闻</a><span class="news"></span></li>
+      <li><a href="member.html">会员专区</a></li>
+      <li><a href="contact.html">客服中心</a></li>
+    </ul>
+  </div>
+  <div id="headerplus">
+    <div id="nav"><a href="#" class="eshop">电子商城</a><a href="#" class="weibo">新浪官微</a><a href="#">壁纸下载</a>|<a href="#">电子杂志</a>|<a href="#" class="last">集团官网</a></div>
+    <div id="share">
+      <div class="tip"><span>分享</span></div>
+      <div class="sharelist" id="sharelist" data-img="" data-title="曼妮芬" data-url="http://www.baidu.com"> <a href="javascript:;" class="weibo" title="分享到新浪微博">分享到新浪微博</a> <a href="javascript:;" class="tt" title="分享到腾讯微博">分享到腾讯微博</a> <a href="javascript:;" class="kaixin001" title="分享到开心网">分享到开心网</a> <a href="javascript:;" class="renren" title="分享到人人网">分享到人人网</a> <a href="javascript:;" class="qzone" title="分享到qq空间">分享到qq空间</a> </div>
+    </div>
+    <div id="language">
+      <ul>
+        <li class="cn"><a href="index.html">简体中文</a></li>
+        <li class="en"><a href="#">ENGLISH</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="wrap" class="clearfix">
+  <div id="content">
+    <div id="newslist" class="ib">
+    <div id="newsgroup">
+      <div class="newsitem" onmouseover="oNNewsOver(this)" onmouseout="oNNewsOut(this)" onclick="openDetails('newsid')"> <a href="javascript:;" title="曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光"> <img src="images/newspic.jpg" />
+        <div class="td">
+          <div class="title">曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光</div>
+          <div class="date">2012年06月20日</div>
+        </div>
+        <div class="mask"></div>
+        </a> </div>
+        <div class="newsitem" onmouseover="oNNewsOver(this)" onmouseout="oNNewsOut(this)"> <a href="javascript:;" title="曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光"> <img src="images/newspic.jpg" />
+        <div class="td">
+          <div class="title">曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光</div>
+          <div class="date">2012年06月20日</div>
+        </div>
+        <div class="mask"></div>
+        </a> </div>
+        <div class="newsitem" onmouseover="oNNewsOver(this)" onmouseout="oNNewsOut(this)"> <a href="javascript:;" title="曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光"> <img src="images/newspic.jpg" />
+        <div class="td">
+          <div class="title">曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光</div>
+          <div class="date">2012年06月20日</div>
+        </div>
+        <div class="mask"></div>
+        </a> </div>
+        <div class="newsitem" onmouseover="oNNewsOver(this)" onmouseout="oNNewsOut(this)"> <a href="javascript:;" title="曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光"> <img src="images/newspic.jpg" />
+        <div class="td">
+          <div class="title">曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光</div>
+          <div class="date">2012年06月20日</div>
+        </div>
+        <div class="mask"></div>
+        </a> </div>
+        <div class="newsitem" onmouseover="oNNewsOver(this)" onmouseout="oNNewsOut(this)"> <a href="javascript:;" title="曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光"> <img src="images/newspic.jpg" />
+        <div class="td">
+          <div class="title">曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光</div>
+          <div class="date">2012年06月20日</div>
+        </div>
+        <div class="mask"></div>
+        </a> </div>
+        <div class="newsitem" onmouseover="oNNewsOver(this)" onmouseout="oNNewsOut(this)"> <a href="javascript:;" title="曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光"> <img src="images/newspic.jpg" />
+        <div class="td">
+          <div class="title">曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光</div>
+          <div class="date">2012年06月20日</div>
+        </div>
+        <div class="mask"></div>
+        </a> </div>
+        <div class="newsitem" onmouseover="oNNewsOver(this)" onmouseout="oNNewsOut(this)"> <a href="javascript:;" title="曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光"> <img src="images/newspic.jpg" />
+        <div class="td">
+          <div class="title">曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光</div>
+          <div class="date">2012年06月20日</div>
+        </div>
+        <div class="mask"></div>
+        </a> </div>
+        <div class="newsitem" onmouseover="oNNewsOver(this)" onmouseout="oNNewsOut(this)"> <a href="javascript:;" title="曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光"> <img src="images/newspic.jpg" />
+        <div class="td">
+          <div class="title">曼妮芬“能量女人”新形象广告“舞林大会”全国首次曝光</div>
+          <div class="date">2012年06月20日</div>
+        </div>
+        <div class="mask"></div>
+        </a> </div>
+    </div>
+    <div id="prev" class="prevbtn"></div>
+     <div id="next" class="nextbtn"></div>
+    </div>
+    <div id="newscontent" style="display:none;">
+      <div id="newscontentwrap">
+      	<h1>超模领衔曼妮芬“能量女人”内衣概念秀 国际班底联手打造</h1>
+      <p class="dateori"><span class="date">2011.09.21</span>来源：汇洁新闻中心</p>
+      <div class="newscontent">
+        <p>杨芳、白殊羽、黎玮珊，这三个清秀的名字背后，是若干个国内模特大赛荣耀的头衔。白殊羽和黎玮珊分别蝉联2009、2010年两届南方新丝路模特大赛的冠军，杨芳则是著名的中国十佳模特，并曾获得新丝路季军称号。</p>
+        <p>在顶级的服装秀场，频繁见到她们的身影，但如此密集地出现在曼妮芬概念发布秀上还是罕见的。 </p>
+        <p>从今年3月开始，曼妮芬“能量女人”品牌概念秀在全国几大重点区域联合巡展，场场都有一线的名模、外模领衔走秀。终端消费者借此近距离感受品牌的文化、实力与模特的魅力。诚然，出席郑州站的三位冠军模特只是曼妮芬 “能量女人 ”品牌概念秀巡展中众多优秀模特中的一部分，而重金签约明星模特的背后，是曼妮芬（汇洁集团）试图向消费者传递“能量女人 ”价值和产品体验的一种良苦用心。</p>
+        <p>全球战略合作伙伴全程支持</p>
+        <p>作为国内知名内衣品牌，曼妮芬此次的发布并非常规的新品发布，而是与国际接轨的 2011秋冬内衣流行趋势发布秀，更是曼妮芬品牌全新形象在郑州的首次亮相，届时将由青春靓丽的内衣模特现场展示四个主题的曼妮芬品牌概念。</p>
+        <p>作为曼妮芬的全球战略合作伙伴，卡琳国际在全球时尚趋势预测与发布领域独占鳌头，与诸多知名一线媒体、机构合作，影响着包括中国消费者在内的广大人群。这次郑州站，卡琳国际从舞美灯光设计、服饰搭配等全程操盘，据记者在现场了解，此次展出的每一件曼妮芬内衣都是在欧洲采买、手工订制，是同步国际概念秀的作品。特惠活动同步进行 </p>
+        <p>记者了解到，为答谢长期以来郑州消费者的支持，曼妮芬特别安排了一系列丰富多彩的主题特惠活动。9月10-22日期间，曼妮芬推出“年度震撼特惠”，文胸、内裤、暖衣、睡衣产品均有超值优惠，郑州大商新玛特总店曼妮芬旗下品牌（曼妮芬、伊维斯、兰卓丽）专柜“全场新品买满有折”；且有“VIP嘉年华精品尊享”专场，场场精彩不断，具体优惠内容可通过商场内宣传单了解。</p>
+      </div>
+      </div>
+      <div id="close" class="close"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

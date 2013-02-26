@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员专区-曼妮芬</title>
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<!--[if IE 6]>
+<script src="js/DD_belatedPNG.js"></script>
+<script>
+  DD_belatedPNG.fix('#logo img,#mintro img,#mlogin,.news');
+</script>
+<![endif]-->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script>
+	$(function(){
+		var navs = $("#mnav li"),
+			intros = $("#mintro .item"),
+			details = $("#rightinner .mdetailsitem");
+		intros.hide();
+		$(intros[0]).show();
+		navs.each(function(i,n){
+			$(n).bind("click",function(){
+				navs.removeClass("current");
+				$(n).addClass("current");
+				intros.hide();
+				$(intros[i]).show();
+				details.hide();
+				$(details[i]).show();
+			});
+		});
+	});
+</script>
+</head>
+<body>
+<div id="header">
+  <div id="logo"><a href="index.html"><img src="images/logo.png" alt="曼妮芬" /></a></div>
+  <div id="menu">
+    <ul>
+      <li><a href="index.html#rec">特别推荐</a></li>
+      <li><a href="index.html#product">产品展厅</a></li>
+      <li><a href="index.html#brand">品牌故事</a></li>
+      <li><a href="store.html">店铺信息</a></li>
+      <li><a href="news.html">品牌新闻</a><span class="news"></span></li>
+      <li><a href="member.html" class="current">会员专区</a></li>
+      <li><a href="contact.html">客服中心</a></li>
+    </ul>
+  </div>
+  <div id="headerplus">
+    <div id="nav"><a href="#" class="eshop">电子商城</a><a href="#" class="weibo">新浪官微</a><a href="#">壁纸下载</a>|<a href="#">电子杂志</a>|<a href="#" class="last">集团官网</a></div>
+    <div id="share">
+      <div class="tip"><span>分享</span></div>
+      <div class="sharelist" id="sharelist" data-img="" data-title="曼妮芬" data-url="http://www.baidu.com"> <a href="javascript:;" class="weibo" title="分享到新浪微博">分享到新浪微博</a> <a href="javascript:;" class="tt" title="分享到腾讯微博">分享到腾讯微博</a> <a href="javascript:;" class="kaixin001" title="分享到开心网">分享到开心网</a> <a href="javascript:;" class="renren" title="分享到人人网">分享到人人网</a> <a href="javascript:;" class="qzone" title="分享到qq空间">分享到qq空间</a> </div>
+    </div>
+    <div id="language">
+      <ul>
+        <li class="cn"><a href="index.html">简体中文</a></li>
+        <li class="en"><a href="#">ENGLISH</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="wrap" class="clearfix">
+  <div id="content">
+    <div id="left">
+      <div id="mnav">
+        <ul class="clearfix">
+          <li class="current">会员卡介绍</li>
+          <li>会员须知</li>
+          <li>积分查询</li>
+        </ul>
+      </div>
+      <div id="mintro">
+        <div class="item"><img src="images/card_intro.png" /></div>
+        <div class="item"><img src="images/mright.png" /></div>
+        <div class="item">
+          <div id="mlogin">
+            <p class="title">积分查询</p>
+            <form id="mloginform" name="mloginform" method="post" action="">
+              <div class="fitem"><span class="label">会员卡号 \ 手机号码：</span>
+                <input type="text" name="mid" id="mid" />
+              </div>
+              <div class="fitem"><span class="label">登陆密码：</span>
+                <input type="password" name="mpass" id="mpass" />
+              </div>
+              <div class="fbtn">
+                <input type="image" name="btnlogin" id="btnlogin" src="images/btn_login.jpg" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="right">
+      <div id="rightinner">
+        <div class="content member">
+          <div class="mdetailsitem">
+            <h1>会员卡介绍</h1>
+            <p>曼妮芬品牌会员卡分为金卡VIP、银卡VIP及普通会员三种，不同卡别在购物时享受不同的折扣及会员礼遇，并有机会根据消费能力升级。成为曼妮芬会员在全国各大城市的曼妮芬专柜、专卖店即可尊享会员礼遇与特色服务。</p>
+            <p>成为 曼妮芬会员俱乐部的一员，就拥有了与众不同的会员专享！</p>
+            <p>成为 曼妮芬会员俱乐部的一员，体现您时尚卓群的生活理念！</p>
+            <p>成为 曼妮芬会员俱乐部的一员，感受购物带来的丰沛积分回馈！</p>
+            <p>成为 曼妮芬会员俱乐部的一员，即刻分享“能量女人”的专属内衣与美丽生活！</p>
+            <h2>曼妮芬金卡VIP</h2>
+            <p class="nti"><strong>办理条件</strong></p>
+            <ul>
+              <li>曼妮芬品牌各专柜、专卖店一次性买满1980元</li>
+              <li>银卡会员2年内累计积分达4000</li>
+              <li>注：首次开卡不享受折扣、参与积分</li>
+            </ul>
+            <p class="nti"><strong>折扣</strong></p>
+            <ul>
+              <li>全新正价商品8.5折 </li>
+              <li>生日当月全新正价商品7折（凭短信或有效身份证，限6件）</li>
+              <li>会员常规折扣与生日折扣不得与商场其他优惠同时进行</li>
+            </ul>
+            <p class="nti"><strong>积分</strong></p>
+            <ul>
+              <li>7折及7折以上产品1元积1分 </li>
+              <li>7折以下不积分 </li>
+              <li>生日当月消费双倍积分（限1次，可与生日折扣同时进行）</li>
+              <li>普通会员生日无双倍积分</li>
+              <li>1个自然年自动清零可用积分，当年11月1日后新开会员卡，积分不清零。</li>
+            </ul>
+            <p class="nti"><strong>资格审核</strong></p>
+            <ul>
+              <li>自办卡之日起，一个自然年内未消费，POS系统将自动判定为“非活动”会员，非活动状态下，不可享受折扣及积分。</li>
+            </ul>
+            <h2>曼妮芬银卡VIP</h2>
+            <p><strong>办理条件</strong></p>
+            <ul>
+              <li>曼妮芬品牌各专柜、专卖店一次性买满980元</li>
+              <li>会员2年内累计积分达2000</li>
+              <li>注：首次开卡不享受折扣、参与积分</li>
+            </ul>
+          </div>
+          <div class="mdetailsitem" style="display:none;">
+            <h1>会员尊享及须知</h1>
+            <h2>现已开通会员服务</h2>
+            <p>流行趋势发布会\美丽课堂\内衣保养知识\内衣定制\三维人体扫描\到货通知\投诉接待\金卡会员预留商品\最惠优先知\预约试衣\专业胸型诊断及建议\会员专享套餐</p>
+            <h2>会员须知</h2>
+            <div id="mright" class="clearfix">
+              <p class="clearfix"><span class="num">1、</span><span>会员卡仅限开卡人在有效期内使用，会员身份及卡内积分不得转让他人；</span></p>
+              <p class="clearfix"><span class="num">2、</span><span>会员个人资料如有变更，请务必主动联系专柜、专卖店或拨打汇洁集团客服热线400-8899-925选择“会员服务”进行修改，以便您能享受到曼妮芬品牌各项优质会员服务。接受办理时间：工作日09:00-17:00；</span></p>
+              <p class="clearfix"><span class="num">3、</span><span>如发生以下情况，曼妮芬将直接终止您的会员资格及会员卡使用获益权：</span></p>
+              <ul class="subls">
+                <li>1）非本人使用该卡；</li>
+                <li>2）资格审核期内未消费；</li>
+              </ul>
+              <p class="clearfix"><span class="num">4、</span><span>有关曼妮芬品牌会员卡使用规定按最新版本的《深圳汇洁集团曼妮芬品牌会员章程》为准，深圳汇洁集团保留最终解释权。《深圳汇洁集团曼妮芬品牌会员章程》将根据情况做适时的修改和完善，修改内容请以曼妮芬门店、曼妮芬官网或咨询汇洁集团客服热线400-8899-925宣导为准。曼妮芬品牌将为您提供更周到、细致的会  员服务。</span></p>
+            </div>
+          </div>
+          <div class="mdetailsitem" style="display:none;">
+            <div id="memberinfo">
+              <table>
+                <tr>
+                  <th>会员姓名：</td>
+                  <td>ALEXANDER</td>
+                </tr>
+                <tr>
+                  <th>会员生日：</td>
+                  <td>1980/05/26</td>
+                </tr>
+                <tr>
+                  <th>会员卡级别：</td>
+                  <td>VIP金卡</td>
+                </tr>
+                <tr>
+                  <th>会员卡可用积分：</td>
+                  <td>49500</td>
+                </tr>
+                <tr>
+                  <th>会员累积积分：</td>
+                  <td>132500</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
