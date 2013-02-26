@@ -7,15 +7,77 @@
 <!--[if IE 6]>
 <script src="js/DD_belatedPNG.js"></script>
 <script>
-  DD_belatedPNG.fix('#logo img,.news');
+  DD_belatedPNG.fix('#logo img,.news,#close,#next,#prev');
 </script>
 <![endif]-->
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/template.min.js"></script>
 <script>
-	(function(){
-		
-	})();
+	//切换城市
+	function showStoreList(index,el){
+		$("#citystorelist .citystoreitem").hide();
+		$("#citystoreitem"+index).show();
+		$("#citylist li").removeClass("current");
+		$(el).addClass("current");
+	}
+	
+	//展示下一张图片
+	var currentImgIndex = 0;
+	function showPrevImg(){
+		var imgs = $("#gallerylist .item");
+		currentImgIndex-=1;
+		if(currentImgIndex<0){
+			currentImgIndex = 0;
+		}else{
+			imgs.hide();
+			$(imgs[currentImgIndex]).fadeIn();
+		}
+	}
+	//展示下一张图片
+	function showNextImg(){
+		var imgs = $("#gallerylist .item");
+		currentImgIndex+=1;
+		if(currentImgIndex==imgs.length){
+			currentImgIndex = currentImgIndex-1;
+		}else{
+			imgs.hide();
+			$(imgs[currentImgIndex]).fadeIn();
+		}
+	}
+	//展示门店图片集
+	var pageScrollTop = 0;
+	function showGallery(el){
+		//重置index
+		currentImgIndex = 0;
+		//隐藏left right 改wrap背景
+		$("#left").hide();
+		$("#right").hide();
+		$("#wrap").css("background","#2B0D26");
+		var el = $(el),
+			pics = el.data("stpics").split(","),
+			storename = el.data("stname"),
+			data = {},
+			html = "";
+		data.storename  = storename;
+		data.pics = pics;
+		html = template("gallerylist_template",data);
+		$("#gallerylist").html(html);
+		$("#gallery").show();
+		pageScrollTop = $(document).scrollTop();
+		$(document).animate({scrollTop:0},500);
+	}
+	$(function(){
+		//关闭图片浏览
+		$("#gallery").hide();
+		$("#close").bind("click",function(){
+			$("#gallery").hide();
+			$("#left").show();
+			$("#right").show();
+			$("#wrap").css("background","url(images/content_bg.jpg) center top repeat-y");
+			$(document.body).animate({scrollTop:pageScrollTop},500);
+		});
+	});
 </script>
 </head>
 <body>
@@ -48,21 +110,25 @@
 </div>
 <div id="wrap" class="clearfix">
   <div id="content">
-    <div id="left">map</div>
+    <div id="left">
+    	<div id="map">
+        	<img src="images/map.png" />
+        </div>
+    </div>
     <div id="right">
       <div id="province">四川省</div>
-      <ul id="citylist">
-        <li>成都市</li>
-        <li>德阳市</li>
-        <li>乐山市</li>
+      <ul id="citylist" class="clearfix">
+        <li class="current" onclick="showStoreList(1,this)">成都市</li>
+        <li onclick="showStoreList(2,this)">德阳市</li>
+        <li onclick="showStoreList(3,this)">乐山市</li>
       </ul>
       <div id="citystorelist">
-      	<div class="citystoreitem">
+      	<div class="citystoreitem" id="citystoreitem1">
         	<table cellspacing="0" cellpadding="0">
           <tr>
             <td>成都市</td>
             <td>成都北京华联</td>
-            <td>成都市锦江区梨花街9号盐市口广场<span class="gallery" data-gid="1"></span></td>
+            <td>成都市锦江区梨花街9号盐市口广场<span class="gallery" data-stpics="store1.jpg,store1.jpg" data-stname="成都市锦江区梨花街9号盐市口广场" title="查看门店图片" onclick="showGallery(this)"></span></td>
           </tr>
           <tr>
             <td>成都市</td>
@@ -87,7 +153,7 @@
           <tr>
             <td>成都市</td>
             <td>成都摩尔百盛阳熙店</td>
-            <td>成都市青羊区永陵路19号<span class="gallery" data-gid="1"></span></td>
+            <td>成都市青羊区永陵路19号广场<span class="gallery" data-stpics="store1.jpg,store1.jpg" data-stname="成都市锦江区梨花街9号盐市口广场" title="查看门店图片" onclick="showGallery(this)"></span></td>
           </tr>
           <tr>
             <td>成都市</td>
@@ -166,7 +232,7 @@
           </tr>
         </table>
         </div>
-        <div class="citystoreitem">
+        <div class="citystoreitem" style="display:none;" id="citystoreitem2">
        	  <table cellpadding="0" cellspacing="0">
               <tr>
                 <td>德阳市</td>
@@ -180,7 +246,7 @@
               </tr>
             </table>
         </div>
-        <div class="citystoreitem">
+        <div class="citystoreitem" style="display:none;"  id="citystoreitem3">
        	  <table cellpadding="0" cellspacing="0">
             <tr>
               <td>乐山市</td>
@@ -192,17 +258,20 @@
       </div>
     </div>
     <div id="gallery">
-    	<div id="gallerylist">
-        	<div class="item">
-            	<img src="images/store1.jpg" />
-                <div class="addr">
-                	<p>四川省成都市凯丹广场专卖店</p>
-                	<div class="mask"></div>
-                </div>
-            </div>
-        </div>
-        <div id="prev"></div>
-        <div id="next"></div>
+    	<div id="gallerylist"></div>
+		  <script type="text/template" id="gallerylist_template">
+		  		<%for(var i=0,len=pics.length;i<len;i++){%>
+					<div class="item">
+						<img src="images/<%=pics[i]%>" />
+						<div class="addr">
+							<p><%=storename%></p>
+						</div>
+						<div class="mask"></div>
+					</div>
+				<%}%>
+          </script>
+        <div id="prev" class="prev" onclick="showPrevImg()"></div>
+        <div id="next" class="next" onclick="showNextImg()"></div>
         <div id="close" class="close"></div>
     </div>
   </div>

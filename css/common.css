@@ -555,3 +555,133 @@ a {
 	top:50%;
 	margin-top:-78px;
 }
+#map {
+	padding-top:100px;
+	padding-left:60px;
+}
+#province {
+	padding-left:18px;
+	padding-top:60px;
+	font-size:28px;
+	font-weight:bold;
+	font-family:"Microsoft YaHei";
+	color:#E8C693;
+	padding-bottom:1em;
+}
+#citylist {
+	padding-left:18px;
+	padding-right:14px;
+	padding-bottom:30px;
+	color:#F9EACF;
+	font-size:18px;
+	font-weight:bold;
+	font-family:"Microsoft YaHei";
+}
+#citylist li {
+	background:url(../images/r_gap.gif) 0 7px no-repeat;
+	float:left;
+	margin-right:12px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:12px;
+	cursor:pointer;
+}
+#citylist .first {
+	background:none;
+}
+#citylist .current {
+	text-decoration:underline;
+}
+#citystorelist {
+	padding-left:9px;
+	color:#FFEBC0;
+}
+#citystorelist table td {
+	padding:9px;
+	vertical-align:middle;
+}
+#citystorelist .gallery {
+	display:inline-block;*display:inline;zoom:1;
+	width:18px;
+	height:15px;
+	background:url(../images/pictip.gif) 0 0 no-repeat;
+	margin-left:10px;
+	cursor:pointer;
+	vertical-align:top;
+}
+#gallery {
+	clear:both;
+	height:530px;
+	width:1110px;
+	margin:0 auto;
+	padding-top:110px;
+	position:relative;
+}
+#gallerylist {
+	padding-left:89px;
+	width:932px;
+	height:530px;
+	overflow:hidden;
+	text-align:center;
+}
+#gallerylist .item {
+	width:932px;
+	overflow:hidden;
+	position:relative;
+}
+#gallerylist img {
+	display:block;
+}
+#gallerylist .addr {
+	position:absolute;
+	left:0;
+	bottom:0;
+	height:55px;
+	line-height:55px;
+	width:100%;
+	text-align:center;
+	z-index:2;
+}
+#gallerylist .addr p {
+	padding:0 1em;
+	color:#F9E8CC;
+	font-weight:bold;
+	font-family:"Microsoft YaHei";
+	font-size:18px;
+}
+#gallerylist .mask {
+	position:absolute;
+	height:55px;
+	width:100%;
+	z-index:1;
+	background:#000000;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	left:0;
+	bottom:0;
+}
+#gallery .prev,#gallery .next {
+	width:55px;
+	height:110px;
+	position:absolute;
+	top:320px;
+	background:url(../images/sprev.png) 0 0 no-repeat;
+	cursor:pointer;
+}
+#gallery .prev {
+	left:0;
+}
+#gallery .next {
+	right:0;
+	background-image:url(../images/snext.png);
+	right:0;
+}
+#gallery .close {
+	background:url(../images/close_btn.png) 0 0 no-repeat;
+	width:230px;
+	height:45px;
+	position:absolute;
+	right:0;
+	top:23px;
+	cursor:pointer;
+}
